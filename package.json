@@ -1,0 +1,40 @@
+{
+  "name": "game-assets-downloader",
+  "version": "1.0.0",
+  "description": "Game assets downloader",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "lint": "node_modules/eslint/bin/eslint.js src/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.zooz.co:PaymentsOSProcessors/Credorax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "aws-sdk": "^2.771.0",
+    "axios": "^0.20.0",
+    "bunyan": "^1.8.14",
+    "express": "^4.16.4",
+    "express-requests-logger": "^3.0.2",
+    "graceful-shutdown-express": "^2.0.0",
+    "http-status-codes": "^2.1.4",
+    "js-sha256": "^0.9.0",
+    "jszip": "^3.5.0",
+    "lodash": "^4.17.20",
+    "openapi-validator-middleware": "^3.1.1",
+    "query-string": "^6.12.0",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}

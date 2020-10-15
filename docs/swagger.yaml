@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Data assets downloader
+  description: The service allows users to download game assets
+
+tags:
+  - name: Get assets
+    description: >-
+      Endpoint which returns a zip of all game asset files
+paths:
+  /download/{id}:
+    get:
+      description: Fetch academic questions
+      parameters:
+        - in: path    
+          name: 'id'
+          description: 'The id which represents game id'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/zip:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_body'
+        '204':
+          description: No Content        
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_model'     
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_model'
+
+components:
+  schemas:
+    response_body:
+      type: object
+      properties:
+        videos:
+          type: string
+        images:
+          type: string
+        audio:
+          type: string
+
+    error_model:
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Error message.
