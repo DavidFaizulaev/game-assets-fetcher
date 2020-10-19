@@ -11,7 +11,7 @@ const downloaderModel = async (req, res, next) => {
     const { params, headers } = req;
     const gameId = params.id;
 
-    res.setHeader('Access-Control-Allow-Origin', headers.origin);
+    res.set('Access-Control-Allow-Origin', headers.origin);
 
     const gameAssetsObject = find(assetsData, function(gameData) { return gameData.id === gameId });
     if (!gameAssetsObject) {
@@ -30,8 +30,8 @@ const downloaderModel = async (req, res, next) => {
 
     await Promise.all(fetcherObject.requestsArray);
 
-    res.setHeader('Content-disposition', 'attachment; filename=game-assets.zip');
-    res.setHeader('Content-type', 'application/zip, application/octet-stream, application/x-zip-compressed, multipart/x-zip');
+    res.set('Content-disposition', 'attachment; filename=game-assets.zip');
+    res.set('Content-type', 'application/zip, application/octet-stream, application/x-zip-compressed, multipart/x-zip');
 
     fetcherObject.zip
         .generateNodeStream({ type: 'nodebuffer', streamFiles: true })
